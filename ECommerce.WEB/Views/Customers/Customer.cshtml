@@ -1,0 +1,115 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    </style>
+</head>
+<body onload="mainModel.ListAllCustomers()">
+    <div class="container">
+        <div class="row" style="display: flex; align-content:center; justify-content:flex-end; margin-top:10px">
+            <button 
+                    data-bind="click:mainModel.AddNewCustomer"
+                    class="btn btn-warning waves-effect">
+                <i class="material-icons center left">add</i>
+                Adicionar Clientes
+            </button>
+        </div>
+        <div class="row">
+            <table class="table striped table-condensed">
+                <thead>
+                    <tr>
+                        <td>Codigo</td>
+                        <td>Cliente</td>
+                        <td>Tipo</td>
+                        <td>Ativo?</td>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: mainModel.customerList">
+                    <tr>
+                        <td data-bind="text: cIdCustomer"></td>
+                        <td data-bind="text: cCustomerName"></td>
+                        <td data-bind="text: xCustomerType"></td>
+                        <td data-bind="text: lEnabled"></td>
+                        <td style="display:flex; justify-content:space-evenly;">
+                            <button class="btn btn-info waves-effect">
+                                <span class="material-icons" style="display:flex; align-content:center">
+                                    create
+                                </span>
+                            </button>
+                            <button class="btn btn-primary waves-effect">
+                                <span class="material-icons" style="display:flex; align-content:center">
+                                    local_grocery_store
+                                </span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <button data-bind="visible: !mainModel.customerList()"
+                    class="btn btn-success waves-effect" style="float:right; margin-top: 5px">
+                Carregar Clientes
+            </button>
+        </div>
+    </div>
+</body>
+</html>
+
+@section scripts {
+    <script src="~/js/Customers/mainModel.js"></script>
+    <script src="~/js/util.js"></script>
+
+    <script type="text/javascript">
+
+
+        ko.bindingHandlers.materialSelectEnabled = {
+            update: function (element, valueAccessor) {
+                var value = valueAccessor();
+
+                if (ko.unwrap(value)) {
+                    $(element).prop('disabled', true);
+                    $(element).material_select();
+                } else {
+                    $(element).prop('disabled', false);
+                    $(element).material_select();
+                }
+            }
+        };
+
+        var mainModel = new MainModel();
+
+        ko.options.deferUpdates = true
+        ko.applyBindings(mainModel, document.getElementById('formMain'))
+
+        Util.RefreshMaterialize();
+
+        Util.HideLoading();
+
+                        //window.onload = () => {
+                        //    mainModel.ListAllCustomers;
+                        //};
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

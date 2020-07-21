@@ -1,0 +1,111 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            background-color: aqua !important;
+        }
+
+        .container-fluid {
+            padding: 10px;
+            margin-top: 170px;
+        }
+
+            .container-fluid .row {
+                padding: 10px;
+            }
+
+        a .btn_logar {
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col s4"></div>
+            <div class="col s4">
+                <div id="formMain" class="card-panel">
+                    <h6 class="title-card center"><span class="material-icons" style="font-size:6rem">account_circle</span></h6>
+                    <div class="card-content">
+                        <label>Nome</label>
+                        <input class="input-field" type="text" id="NameUser" name="NameUser" 
+                               data-bind="value: NameUser"/>
+                        <label>Email</label>
+                        <input class="input-field" type="text" id="EmailUser" name="EmailUser"
+                               data-bind="value: EmailUser" />
+                        <label>Senha</label>
+                        <input class="input-field" type="password" id="PasswordUser" name="PasswordUser"
+                               data-bind="value: PasswordUser" />
+                        <h1></h1>
+                        <div class="card-action">
+                            <button data-bind="click:OnClickNewUser"
+                                    class="waves-effect waves-light btn"
+                                    href="#">
+                                <i class="material-icons right">save</i>
+                                Salvar
+                            </button>
+                        </div>
+                        &nbsp
+                    </div>
+            </div>
+            <div class="col s4"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+@section scripts {
+    <script src="~/js/NewUser/mainModel.js"></script>
+    <script src="~/js/util.js"></script>
+
+    <script type="text/javascript">
+
+
+        ko.bindingHandlers.materialSelectEnabled = {
+            update: function (element, valueAccessor) {
+                var value = valueAccessor();
+
+                if (ko.unwrap(value)) {
+                    $(element).prop('disabled', true);
+                    $(element).material_select();
+                } else {
+                    $(element).prop('disabled', false);
+                    $(element).material_select();
+                }
+            }
+        };
+
+        var mainModel = new MainModel();
+
+        ko.options.deferUpdates = true
+        ko.applyBindings(mainModel, document.getElementById('formMain'))
+
+        Util.RefreshMaterialize();
+
+        Util.HideLoading();
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

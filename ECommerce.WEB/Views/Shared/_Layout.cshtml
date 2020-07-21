@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ECommerce.WEB</title>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/materialize/css/materialize.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/datatables/datatables.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css" asp-append-version="true" />
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="">
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/lib/moment/moment-with-locales.js" asp-append-version="true"></script>
+    <script src="~/lib/pickadate/picker.js" asp-append-version="true"></script>
+    <script src="~/lib/pickadate/picker.date.js" asp-append-version="true"></script>
+    <script src="~/lib/knockout/knockout.js" asp-append-version="true"></script>
+    <script src="~/lib/knockout/knockout.mapping.js" asp-append-version="true"></script>
+    <script src="~/lib/knockout/knockout.pickadate.js" asp-append-version="true"></script>
+    <script src="~/lib/knockout/knockout.validation.min.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables/datatables.min.js" asp-append-version="true"></script>
+    <script src="~/lib/materialize/js/materialize.js" asp-append-version="true"></script>
+    <script src="~/lib/pickadate/translations/pt_BR.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-maskmoney/jquery.maskMoney.min.js" asp-append-version="true"></script>
+
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
